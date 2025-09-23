@@ -13,8 +13,13 @@ public class GameController {
         Announce.CHANCE.print(gameRound.getCount());
         while (true) {
             Announce.INPUT.print();
-
-            int input = Integer.parseInt(sc.nextLine());
+            int input;
+            try {
+                input = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                Announce.INPUT_ERROR.print();
+                continue;
+            }
 
             if (input > 100 || input < 0) {
                 Announce.INPUT_ERROR.print();

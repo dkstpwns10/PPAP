@@ -1,12 +1,14 @@
 package guessing.domain;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class GameRound {
     private int count = 7;
     private int tryCount = 1;
     private final int randomNumber;
 
     public GameRound(){
-        this.randomNumber = (int)(Math.random()*100)+1;
+        this.randomNumber = ThreadLocalRandom.current().nextInt(1,101);
     }
 
     public Announce inGameAnnounce(int input){
