@@ -10,30 +10,19 @@ public class GameRound {
     }
 
     public Announce inGameAnnounce(int input){
-        /*if(input >100 || input < 0) {
-            Announce.INPUT_ERROR.print();
-            continue;
-        }*/
 
         count--;
-        tryCount++;
 
         if (randomNumber == input) {
-//            Announce.REMAINING_OPPORTUNITY.print(tryCount);
             return Announce.WIN;
         } else if (randomNumber < input) {
+            tryCount++;
             return Announce.DOWN;
         } else {
+            tryCount++;
             return Announce.UP;
         }
 
-//        Announce.CHANCE.print(count);
-        /*if (count <=0) {
-            Announce.LOSE.print();
-            Announce.ANSWER.print(randomNumber);
-
-            return gameController.reTry();
-        }*/
     }
     public boolean isOver() {
         return count <= 0;
