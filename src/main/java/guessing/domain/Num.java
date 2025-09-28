@@ -1,5 +1,7 @@
 package guessing.domain;
 
+import guessing.view.InputView;
+
 public class Num {
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 100;
@@ -11,9 +13,20 @@ public class Num {
         this.value = value;
     }
 
+    public static Num from(InputView inputView) {
+        while (true) {
+            try {
+                int value = inputView.readNumber();
+                return new Num(value);
+            } catch (IllegalArgumentException e) {
+                Announce.INPUT_NUMBER_ERROR.execute();
+            }
+        }
+    }
+
     private void validateRange(final int value) {
         if (value < MIN_RANGE || MAX_RANGE < value) {
-            throw new IllegalArgumentException("1부터 100 사이의 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(Announce.INPUT_NUMBER_ERROR.toString());
         }
     }
 

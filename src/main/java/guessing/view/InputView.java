@@ -1,10 +1,7 @@
 package guessing.view;
 
-import guessing.domain.Announce;
-
 import java.util.Scanner;
-
-import static guessing.domain.Announce.INPUT_NUMBER_MESSAGE;
+import static guessing.domain.Announce.*;
 
 public class InputView {
 
@@ -23,7 +20,7 @@ public class InputView {
             } else if (retry.equals("N")) {
                 return false;
             }
-            System.out.println("Y와 N중에 골라주세요.");
+            INPUT_RETRY_ERROR.execute();
         }
     }
 }

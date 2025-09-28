@@ -16,14 +16,7 @@ public class GameController {
         Announce result;
 
         while (true) {
-            Num num;
-            try {
-                int value = inputView.readNumber();
-                num = new Num(value);
-            } catch (IllegalArgumentException e) {
-                Announce.INPUT_ERROR.execute();
-                continue;
-            }
+            Num num = Num.from(inputView);
 
             result = gameRound.inGameAnnounce(num.getValue());
 
@@ -35,5 +28,4 @@ public class GameController {
 
         }
     }
-
 }
